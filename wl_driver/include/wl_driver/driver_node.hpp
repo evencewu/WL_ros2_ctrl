@@ -27,6 +27,6 @@ namespace wl_driver
   private:
     A1Motor leg_motor[4];
 
-    //ecat::EcatBase Ethercat;
+    ecat::EcatBase Ethercat;
   };
 }
