@@ -22,7 +22,7 @@ namespace wl_driver
   {
   public:
     explicit WlDriverNode(const rclcpp::NodeOptions &options);
-    //static void safe_stop();
+    void safe_stop();
     
   private:
     A1Motor leg_motor[4];

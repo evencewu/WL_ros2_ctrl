@@ -5,11 +5,25 @@ namespace wl_driver
   WlDriverNode::WlDriverNode(const rclcpp::NodeOptions &options) : Node("Wl_driver_node", options)
   {
     char phy[] = "enp5s0";
-    RCLCPP_INFO(this->get_logger(), "wl_driver启动");
-    //RCLCPP_INFO(this->get_logger(), "wl_driver启动%d",ecat::call_1());
-    //RCLCPP_INFO(this->get_logger(), "wl_driver启动,网口%s\n",phy);
-    //Ethercat.EcatStart(phy);
-    //Ethercat.SetUserStop(this->safe_stop);
+    //RCLCPP_INFO(this->get_logger(), "wl_driver启动");
+
+    RCLCPP_INFO(this->get_logger(), "wl_driver启动,网口%s\n",phy);
+    Ethercat.EcatStart(phy);
+
+    for (int i = 0; i < 1000; i++)
+    {
+      Ethercat.packet_tx->LED = 0x03;
+      RCLCPP_INFO(this->get_logger(), "loop\n");
+      Ethercat.EcatSyncMsg();
+    }
+
+    safe_stop();
+    Ethercat.EcatStop();
+  }
+
+  void WlDriverNode::safe_stop()
+  {
+    
   }
 }
 

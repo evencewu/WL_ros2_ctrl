@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #######################
 ## Find dependencies ##
 #######################
+
 find_package(ament_cmake_auto REQUIRED)
 find_package(ethercat_to_can REQUIRED)
 ament_auto_find_build_dependencies()
